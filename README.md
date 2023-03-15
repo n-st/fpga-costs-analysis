@@ -2,11 +2,12 @@
 
 ## Equation
 
-$ASIC^{NRE} = Maskset^{NRE} + IP^{NRE} + Package^{NRE} + Test^{NRE}$
+$Production^{NRE} = \begin{cases} \displaystyle
+  Maskset^{NRE} + IP^{NRE} + Package^{NRE} + Test^{NRE} & \text{if is ASIC} \\
+  IP^{NRE} & \text{if is FPGA} \\
+\end{cases}$
 
-$FPGA^{NRE} = IP^{NRE}$
-
-$Total^{NRE} = Development^{NRE} + ASIC/FPGA^{NRE}$
+$Total^{NRE} = Development^{NRE} + Production^{NRE}$
 
 $TotalUnitCost = UnitCost * LifetimeVolume$
 
