@@ -24,7 +24,7 @@ ASIC NRE cost:
 
 FPGA NRE cost:
 
-- $\text{Development NRE{$ – cost of the FPGA development efforts (engineers)
+- $\text{Development NRE}$ – cost of the FPGA development efforts (engineers)
 - $\text{IP NRE}$ – total cost of all IPs needed for the FPGA (for example: HDLC, Video Compression etc)
 - $\text{Unit Cost}$ – cost of the FPGA unit in production
 - $\text{Lifetime Volume}$ – the number of FPGAs you plan to produce over the entire project lifetime
