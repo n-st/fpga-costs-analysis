@@ -7,14 +7,14 @@ Production^{NRE} =
 \begin{cases}
   Maskset^{NRE} + IP^{NRE} + Package^{NRE} + Test^{NRE} & \text{if is ASIC} \\
   IP^{NRE} & \text{if is FPGA} \\
-\end{cases}
+\end{cases} \\
+
+Total^{NRE} = Development^{NRE} + Production^{NRE} \\
+
+TotalUnitCost = UnitCost * LifetimeVolume \\
+
+TotalProjectCost = Total^{NRE} + TotalUnitCost
 $$
-
-$Total^{NRE} = Development^{NRE} + Production^{NRE}$
-
-$TotalUnitCost = UnitCost * LifetimeVolume$
-
-$TotalProjectCost = Total^{NRE} + TotalUnitCost$
 
 <!-- markdownlint-disable MD037 -->
 
@@ -44,3 +44,4 @@ $FPGA^{NRE}$ cost:
 - <https://hardwarebee.com/fpga-vs-asic-calculator/>
 - <https://anysilicon.com/fpga-vs-asic-choose/>
 - <https://numato.com/blog/differences-between-fpga-and-asics/>
+  $$
