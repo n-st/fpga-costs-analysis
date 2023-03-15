@@ -72,7 +72,9 @@ export class Solution implements SolutionOptions {
 
   getCostEffectiveVolume(target: Solution) {
     // Equation: Total^{NRE}_a + (UnitCost_a * n) = Total^{NRE}_b + (UnitCost_b * n)
-    throw new Error('Not implemented')
+    const totalNRE = this.totalNRE.add(target.totalNRE)
+    const unitCost = this.unitCost.add(target.unitCost)
+    return totalNRE.div(unitCost)
   }
 }
 
