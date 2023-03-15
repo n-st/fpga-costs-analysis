@@ -12,6 +12,10 @@ $\text{Total Unit Cost} = \text{Unit Cost} * \text{Lifetime Volume}$
 
 $\text{Total Project Cost} = \text{Total NRE} + \text{Total Unit Cost}$
 
+Cost Effective Volume:
+
+$TotalNRE_a + (UnitCost_a *n) = TotalNRE_b + (UnitCost_b* n)$
+
 ASIC NRE cost:
 
 - $\text{Development NRE}$ – cost of the ASIC development efforts (engineers and EDA tools)

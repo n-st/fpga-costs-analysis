@@ -62,10 +62,11 @@ export class Solution implements SolutionOptions {
     return this.getTotalNRE().add(this.getTotalUnitCost(lifetimeVolume))
   }
 
-  getCriticalLifetimeVolume(target: Solution) {
-    const totalNRE = Decimal.max(this.getTotalNRE().div(this.unitCost), target.getTotalNRE().div(this.unitCost))
-    // (1.5 * 1000000) / 8
-    // const unitCostRate = Math.abs(this.unitCost / target.unitCost)
-    // return totalNRE / unitCostRate
+  getCostEffectiveVolume(target: Solution) {
+    // Equation: TotalNRE_a + (UnitCost_a * n) = TotalNRE_b + (UnitCost_b * n)
+
+    // prettier-ignore
+    const costFactor = Decimal.max(this.unitCost, target.unitCost)
+      .div(Decimal.min(this.unitCost, target.unitCost))
   }
 }
