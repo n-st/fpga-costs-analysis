@@ -1,4 +1,4 @@
-# FPGA and ASIC costs analytics
+# FPGA v.s. ASIC costs analytics
 
 ## Equation
 
