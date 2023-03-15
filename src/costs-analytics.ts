@@ -1,64 +1,71 @@
+import { Decimal } from 'decimal.js'
+
 export interface SolutionOptions {
   readonly title: string
-  readonly developmentNRE: number
-  readonly masksetNRE?: number
-  readonly ipNRE?: number
-  readonly packageNRE?: number
-  readonly testNRE?: number
-  readonly unitCost: number
-  readonly lifetimeVolume?: number
+  readonly developmentNRE: Decimal.Value
+  readonly masksetNRE?: Decimal.Value
+  readonly ipNRE?: Decimal.Value
+  readonly packageNRE?: Decimal.Value
+  readonly testNRE?: Decimal.Value
+  readonly unitCost: Decimal.Value
+  readonly lifetimeVolume?: Decimal.Value
 }
 
 export class Solution implements SolutionOptions {
   readonly title: string
-  readonly developmentNRE: number
-  readonly masksetNRE: number
-  readonly ipNRE: number
-  readonly packageNRE: number
-  readonly testNRE: number
-  readonly unitCost: number
-  readonly lifetimeVolume: number
+  readonly developmentNRE: Decimal
+  readonly masksetNRE: Decimal
+  readonly ipNRE: Decimal
+  readonly packageNRE: Decimal
+  readonly testNRE: Decimal
+  readonly unitCost: Decimal
+  readonly lifetimeVolume: Decimal
 
   constructor(options: SolutionOptions) {
     this.title = options.title
-    this.developmentNRE = Math.max(options.developmentNRE, 0)
-    this.masksetNRE = Math.max(options.masksetNRE ?? 0, 0)
-    this.ipNRE = Math.max(options.ipNRE ?? 0, 0)
-    this.packageNRE = Math.max(options.packageNRE ?? 0, 0)
-    this.testNRE = Math.max(options.testNRE ?? 0, 0)
-    this.unitCost = Math.max(options.unitCost, 0)
-    this.lifetimeVolume = Math.max(options.lifetimeVolume ?? 0, 0)
+    this.developmentNRE = Decimal.max(options.developmentNRE, 0)
+    this.masksetNRE = Decimal.max(options.masksetNRE ?? 0, 0)
+    this.ipNRE = Decimal.max(options.ipNRE ?? 0, 0)
+    this.packageNRE = Decimal.max(options.packageNRE ?? 0, 0)
+    this.testNRE = Decimal.max(options.testNRE ?? 0, 0)
+    this.unitCost = Decimal.max(options.unitCost, 0)
+    this.lifetimeVolume = Decimal.max(options.lifetimeVolume ?? 0, 0)
+    Object.freeze(this)
   }
 
-  static from(options: SolutionOptions) {
+  static from(options: Solution | SolutionOptions): Solution {
+    if (options instanceof this) return options
     return new this(options)
   }
 
-  get isFPGA() {
-    return this.developmentNRE + this.ipNRE === this.totalNRE
+  isFPGA() {
+    return this.ipNRE.equals(this.getProductionNRE())
   }
 
-  get isASIC() {
-    return !this.isFPGA
+  isASIC() {
+    return !this.isFPGA()
   }
 
-  get totalNRE() {
-    return this.developmentNRE + this.masksetNRE + this.ipNRE + this.packageNRE + this.testNRE
+  getProductionNRE() {
+    return this.masksetNRE.add(this.ipNRE).add(this.packageNRE).add(this.testNRE)
   }
 
-  get totalUnitCost() {
-    return this.unitCost * this.lifetimeVolume
+  getTotalNRE() {
+    return this.developmentNRE.add(this.getProductionNRE())
   }
 
-  get totalProjectCost() {
-    return this.totalNRE + this.totalUnitCost
+  getTotalUnitCost(lifetimeVolume: Decimal.Value = this.lifetimeVolume) {
+    return this.unitCost.mul(lifetimeVolume)
   }
-}
 
-export class CostsAnalytics {
-  private readonly solutions: readonly Solution[]
+  getTotalProjectCost(lifetimeVolume?: Decimal.Value) {
+    return this.getTotalNRE().add(this.getTotalUnitCost(lifetimeVolume))
+  }
 
-  constructor(...solutions: SolutionOptions[]) {
-    this.solutions = solutions.map(Solution.from)
+  getCriticalLifetimeVolume(target: Solution) {
+    const totalNRE = Decimal.max(this.getTotalNRE().div(this.unitCost), target.getTotalNRE().div(this.unitCost))
+    // (1.5 * 1000000) / 8
+    // const unitCostRate = Math.abs(this.unitCost / target.unitCost)
+    // return totalNRE / unitCostRate
   }
 }

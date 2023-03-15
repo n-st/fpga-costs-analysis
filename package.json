@@ -3,7 +3,8 @@
   "private": true,
   "description": "FPGA and ASIC cost analysis",
   "dependencies": {
-    "d3": "^7.8.2"
+    "d3": "^7.8.2",
+    "decimal.js": "^10.4.3"
   },
   "devDependencies": {
     "ts-node": "^10.9.1",
