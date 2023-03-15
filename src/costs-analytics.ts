@@ -8,7 +8,7 @@ export interface SolutionOptions {
   readonly packageNRE?: Decimal.Value
   readonly testNRE?: Decimal.Value
   readonly unitCost: Decimal.Value
-  readonly lifetimeVolume?: Decimal.Value
+  readonly price?: Decimal.Value
 }
 
 export class Solution implements SolutionOptions {
@@ -19,7 +19,7 @@ export class Solution implements SolutionOptions {
   readonly packageNRE: Decimal
   readonly testNRE: Decimal
   readonly unitCost: Decimal
-  readonly lifetimeVolume: Decimal
+  readonly price: Decimal
 
   constructor(options: SolutionOptions) {
     this.title = options.title
@@ -29,7 +29,7 @@ export class Solution implements SolutionOptions {
     this.packageNRE = Decimal.max(options.packageNRE ?? 0, 0)
     this.testNRE = Decimal.max(options.testNRE ?? 0, 0)
     this.unitCost = Decimal.max(options.unitCost, 0)
-    this.lifetimeVolume = Decimal.max(options.lifetimeVolume ?? 0, 0)
+    this.price = Decimal.max(options.price ?? 0, this.unitCost)
     Object.freeze(this)
   }
 
@@ -39,34 +39,42 @@ export class Solution implements SolutionOptions {
   }
 
   isFPGA() {
-    return this.ipNRE.equals(this.getProductionNRE())
+    return this.ipNRE.equals(this.productionNRE)
   }
 
   isASIC() {
     return !this.isFPGA()
   }
 
-  getProductionNRE() {
+  get productionNRE() {
     return this.masksetNRE.add(this.ipNRE).add(this.packageNRE).add(this.testNRE)
   }
 
-  getTotalNRE() {
-    return this.developmentNRE.add(this.getProductionNRE())
+  get profit() {
+    return this.price.minus(this.unitCost)
   }
 
-  getTotalUnitCost(lifetimeVolume: Decimal.Value = this.lifetimeVolume) {
+  get totalNRE() {
+    return this.developmentNRE.add(this.productionNRE)
+  }
+
+  getTotalUnitCost(lifetimeVolume: Decimal.Value) {
     return this.unitCost.mul(lifetimeVolume)
   }
 
-  getTotalProjectCost(lifetimeVolume?: Decimal.Value) {
-    return this.getTotalNRE().add(this.getTotalUnitCost(lifetimeVolume))
+  getTotalNetProfit(lifetimeVolume: Decimal.Value) {
+    return this.profit.mul(lifetimeVolume)
+  }
+
+  getTotalProjectCost(lifetimeVolume: Decimal.Value) {
+    return this.totalNRE.add(this.getTotalUnitCost(lifetimeVolume))
   }
 
   getCostEffectiveVolume(target: Solution) {
-    // Equation: TotalNRE_a + (UnitCost_a * n) = TotalNRE_b + (UnitCost_b * n)
-
-    // prettier-ignore
-    const costFactor = Decimal.max(this.unitCost, target.unitCost)
-      .div(Decimal.min(this.unitCost, target.unitCost))
+    // Equation: Total^{NRE}_a + (UnitCost_a * n) = Total^{NRE}_b + (UnitCost_b * n)
+    throw new Error('Not implemented')
   }
 }
+
+Object.freeze(Solution)
+Object.freeze(Solution.prototype)
