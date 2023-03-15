@@ -12,13 +12,9 @@ $TotalUnitCost = UnitCost * LifetimeVolume$
 
 $TotalProjectCost = Total^{NRE} + TotalUnitCost$
 
-Cost Effective Volume:
-
 <!-- markdownlint-disable MD037 -->
 
-$Total^{NRE}_a + (UnitCost_a * n) = Total^{NRE}_b + (UnitCost_b * n)$
-
-$(Total^{NRE}_a - Total^{NRE}_b) + ((UnitCost_a - UnitCost_b) * n) = 0$
+Cost Effective Volume: $Total^{NRE}_a + (UnitCost_a * n) = Total^{NRE}_b + (UnitCost_b * n)$
 
 <!-- markdownlint-restore -->
 
