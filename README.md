@@ -7,10 +7,11 @@ Total Unit Cost = Unit Costs * Lifetime Volume
 $$
 
 $$
-Total NRE =\\
-Development NRE + \\
-\begin{cases}Maskset NRE + IP NRE + Package NRE + Test NRE,& \text{ASIC NRE}\\ IP NRE,& \text{FPGA NRE}\end{cases}\\
-+ Total Unit Cost
+Unit NRE = \begin{cases}Maskset NRE + IP NRE + Package NRE + Test NRE,& \text{ASIC NRE}\\ IP NRE,& \text{FPGA NRE}\end{cases}
+$$
+
+$$
+Total NRE = Development NRE + Unit NRE + Total Unit Cost
 $$
 
 $$Total Project Cost = Total NRE + Total Unit Cost$$
