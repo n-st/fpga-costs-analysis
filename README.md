@@ -2,40 +2,42 @@
 
 ## Equation
 
-$\text{ASIC NRE} = \text{Maskset NRE} + \text{IP NRE} + \text{Package NRE} + \text{Test NRE}$
+$ASIC^{NRE} = Maskset^{NRE} + IP^{NRE} + Package^{NRE} + Test^{NRE}$
 
-$\text{FPGA NRE} = \text{IP NRE}$
+$FPGA^{NRE} = IP^{NRE}$
 
-$\text{Total NRE} = \text{Development NRE} + \text{ASIC/FPGA NRE}$
+$Total^{NRE} = Development^{NRE} + ASIC/FPGA^{NRE}$
 
-$\text{Total Unit Cost} = \text{Unit Cost} * \text{Lifetime Volume}$
+$Total Unit Cost = Unit Cost * Lifetime Volume$
 
-$\text{Total Project Cost} = \text{Total NRE} + \text{Total Unit Cost}$
+$Total Project Cost = Total^{NRE} + Total Unit Cost$
 
 Cost Effective Volume:
 
 <!-- markdownlint-disable MD037 -->
 
-$TotalNRE_a + (UnitCost_a * n) = TotalNRE_b + (UnitCost_b * n)$
+$Total^{NRE}_a + (UnitCost_a * n) = Total^{NRE}_b + (UnitCost_b * n)$
+
+$(Total^{NRE}_a - Total^{NRE}_b) + ((UnitCost_a - UnitCost_b) * n) = 0$
 
 <!-- markdownlint-restore -->
 
-ASIC NRE cost:
+$ASIC^{NRE}$ cost:
 
-- $\text{Development NRE}$ – cost of the ASIC development efforts (engineers and EDA tools)
-- $\text{Maskset NRE}$ – cost of maskset and MPW required for wafer production
-- $\text{IP NRE}$ – total cost of all IPs needed for the ASIC (for example: PLL, A/D, SERDES, etc)
-- $\text{Package NRE}$ – cost of package design and tooling
-- $\text{Test NRE}$ – the cost of the test solution (wafer sort, final test).
-- $\text{Unit Cost}$ – cost of the ASIC unit in production
-- $\text{Lifetime Volume}$ – the number of ASICs you plan to produce over the entire project lifetime
+- $Development^{NRE}$ – cost of the ASIC development efforts (engineers and EDA tools)
+- $Maskset^{NRE}$ – cost of maskset and MPW required for wafer production
+- $IP^{NRE}$ – total cost of all IPs needed for the ASIC (for example: PLL, A/D, SERDES, etc)
+- $Package^{NRE}$ – cost of package design and tooling
+- $Test^{NRE}$ – the cost of the test solution (wafer sort, final test).
+- $Unit Cost$ – cost of the ASIC unit in production
+- $Lifetime Volume$ – the number of ASICs you plan to produce over the entire project lifetime
 
-FPGA NRE cost:
+$FPGA^{NRE}$ cost:
 
-- $\text{Development NRE}$ – cost of the FPGA development efforts (engineers)
-- $\text{IP NRE}$ – total cost of all IPs needed for the FPGA (for example: HDLC, Video Compression etc)
-- $\text{Unit Cost}$ – cost of the FPGA unit in production
-- $\text{Lifetime Volume}$ – the number of FPGAs you plan to produce over the entire project lifetime
+- $Development^{NRE}$ – cost of the FPGA development efforts (engineers)
+- $IP^{NRE}$ – total cost of all IPs needed for the FPGA (for example: HDLC, Video Compression etc)
+- $Unit Cost$ – cost of the FPGA unit in production
+- $Lifetime Volume$ – the number of FPGAs you plan to produce over the entire project lifetime
 
 ## References
 
