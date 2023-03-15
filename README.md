@@ -2,10 +2,13 @@
 
 ## Equation
 
-$Production^{NRE} = \begin{cases} \displaystyle
+$
+Production^{NRE} =
+\begin{cases}
   Maskset^{NRE} + IP^{NRE} + Package^{NRE} + Test^{NRE} & \text{if is ASIC} \\
   IP^{NRE} & \text{if is FPGA} \\
-\end{cases}$
+\end{cases}
+$
 
 $Total^{NRE} = Development^{NRE} + Production^{NRE}$
 
