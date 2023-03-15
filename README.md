@@ -8,9 +8,9 @@ $FPGA^{NRE} = IP^{NRE}$
 
 $Total^{NRE} = Development^{NRE} + ASIC/FPGA^{NRE}$
 
-$Total Unit Cost = Unit Cost * Lifetime Volume$
+$TotalUnitCost = UnitCost * LifetimeVolume$
 
-$Total Project Cost = Total^{NRE} + Total Unit Cost$
+$TotalProjectCost = Total^{NRE} + TotalUnitCost$
 
 Cost Effective Volume:
 
