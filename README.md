@@ -14,7 +14,11 @@ $\text{Total Project Cost} = \text{Total NRE} + \text{Total Unit Cost}$
 
 Cost Effective Volume:
 
-$TotalNRE_a + (UnitCost_a *n) = TotalNRE_b + (UnitCost_b* n)$
+<!-- markdownlint-disable MD037 -->
+
+$TotalNRE_a + (UnitCost_a * n) = TotalNRE_b + (UnitCost_b * n)$
+
+<!-- markdownlint-restore -->
 
 ASIC NRE cost:
 
