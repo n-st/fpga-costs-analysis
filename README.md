@@ -2,27 +2,33 @@
 
 ## Equation
 
-<!-- markdownlint-disable MD037 -->
-
-$$
+```math
 Production^{NRE} =
 \begin{cases}
   Maskset^{NRE} + IP^{NRE} + Package^{NRE} + Test^{NRE} & \text{if ASIC}\\
   IP^{NRE} & \text{if FPGA}
 \end{cases}
-$$
+```
 
-<!-- markdownlint-restore -->
+```math
+Total^{NRE} = Development^{NRE} + Production^{NRE}
+```
 
-$Total^{NRE} = Development^{NRE} + Production^{NRE}$
+```math
+TotalUnitCost = UnitCost * LifetimeVolume
+```
 
-$TotalUnitCost = UnitCost * LifetimeVolume$
-
-$TotalProjectCost = Total^{NRE} + TotalUnitCost$
+```math
+TotalProjectCost = Total^{NRE} + TotalUnitCost
+```
 
 <!-- markdownlint-disable MD037 -->
 
-Cost Effective Volume: $Total^{NRE}_a + (UnitCost_a * n) = Total^{NRE}_b + (UnitCost_b * n)$
+Cost Effective Volume:
+
+```math
+Total^{NRE}_a + (UnitCost_a * n) = Total^{NRE}_b + (UnitCost_b * n)
+```
 
 <!-- markdownlint-restore -->
 
