@@ -2,11 +2,18 @@
 
 ## Equation
 
-$Total NRE = Development NRE + (Unit Costs * Lifetime Volume)$
+$$
+Total Unit Cost = Unit Costs * Lifetime Volume
+$$
 
-$ASIC Unit Costs = Maskset NRE + IP NRE + Package NRE + Unit Costs$
+$$
+Total NRE =\\
+Development NRE + \\
+\begin{cases}Maskset NRE + IP NRE + Package NRE + Test NRE,& \text{ASIC NRE}\\ IP NRE,& \text{FPGA NRE}\end{cases}\\
++ Total Unit Cost
+$$
 
-$FPGA Unit Costs = IP NRE + Unit Costs$
+$$Total Project Cost = Total NRE + Total Unit Cost$$
 
 ASIC NRE cost:
 
