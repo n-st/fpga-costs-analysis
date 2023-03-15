@@ -2,19 +2,23 @@
 
 ## Equation
 
-$$
+<!-- markdownlint-disable MD037 -->
+
+$
 Production^{NRE} =
 \begin{cases}
   Maskset^{NRE} + IP^{NRE} + Package^{NRE} + Test^{NRE} & \text{if is ASIC} \\
-  IP^{NRE} & \text{if is FPGA} \\
-\end{cases} \\
+  IP^{NRE} & \text{if is FPGA}
+\end{cases}
+$
 
-Total^{NRE} = Development^{NRE} + Production^{NRE} \\
+<!-- markdownlint-restore -->
 
-TotalUnitCost = UnitCost * LifetimeVolume \\
+$Total^{NRE} = Development^{NRE} + Production^{NRE}$
 
-TotalProjectCost = Total^{NRE} + TotalUnitCost
-$$
+$TotalUnitCost = UnitCost * LifetimeVolume$
+
+$TotalProjectCost = Total^{NRE} + TotalUnitCost$
 
 <!-- markdownlint-disable MD037 -->
 
