@@ -4,7 +4,7 @@
 
 <!-- markdownlint-disable MD037 -->
 
-$Production^{NRE} = \begin{cases}Maskset^{NRE} + IP^{NRE} + Package^{NRE} + Test^{NRE} & \text{if is ASIC} \\ IP^{NRE} & \text{if is FPGA}\end{cases}$
+$Production^{NRE} = \begin{cases}Maskset^{NRE} + IP^{NRE} + Package^{NRE} + Test^{NRE} & \text{if is ASIC} IP^{NRE} & \text{if is FPGA}\end{cases}$
 
 <!-- markdownlint-restore -->
 
